@@ -20,7 +20,8 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "seed:ambassadors": "ts-node src/commands/ambassador.seeder.ts",
-    "seed:products": "ts-node src/commands/product.seeder.ts"
+    "seed:products": "ts-node src/commands/product.seeder.ts",
+    "seed:orders": "ts-node src/commands/order.seeder.ts"
   },
   "dependencies": {
     "@nestjs/common": "^7.6.15",
