@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 import { Exclude, Expose } from 'class-transformer';
 import { OrderItem } from './order-item.entity';
-import { Link } from 'src/link/link.entity';
+import { Link } from '../link/link.entity';
 
 @Entity('orders')
 export class Order {

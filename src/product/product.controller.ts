@@ -8,11 +8,11 @@ import {
   Put,
   UseGuards,
 } from '@nestjs/common';
-import { AuthGuard } from 'src/auth/auth.guard';
+import { AuthGuard } from '../auth/auth.guard';
 import { ProductCreateDto } from './dtos/product-create.dto';
 import { ProductService } from './product.service';
 
-@Controller('product')
+@Controller()
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 

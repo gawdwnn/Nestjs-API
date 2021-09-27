@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import { UserService } from './user.service';
 
-@Controller('user')
+@Controller()
 @UseInterceptors(ClassSerializerInterceptor)
 export class UserController {
   constructor(private readonly userService: UserService) {}
