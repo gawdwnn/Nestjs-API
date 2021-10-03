@@ -1,11 +1,13 @@
 import {
   Body,
+  ClassSerializerInterceptor,
   Controller,
   Get,
   Param,
   Post,
   Req,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
 import { AuthService } from '../auth/auth.service';
 import { AuthGuard } from '../auth/auth.guard';
@@ -15,6 +17,7 @@ import { Link } from './link.entity';
 import { Order } from '../order/order.entity';
 
 @Controller()
+@UseInterceptors(ClassSerializerInterceptor)
 export class LinkController {
   constructor(
     private linkService: LinkService,
