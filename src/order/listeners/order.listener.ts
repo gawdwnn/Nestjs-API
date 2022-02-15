@@ -15,8 +15,15 @@ export class OrderListener {
   async handleOrderCompletedEvent(order: Order) {
     const client = this.redisService.getClient();
     client.zincrby('rankings', order.ambassador_revenue, order.user.name);
-    console.log({ order });
+
     // produce a message
-    await this.client.emit('default', order);
+    await this.client.emit(
+      'default',
+      JSON.stringify({
+        ...order,
+        total: order.total,
+        ambassador_revenue: order.ambassador_revenue,
+      }),
+    );
   }
 }

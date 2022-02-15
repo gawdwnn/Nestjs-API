@@ -32,4 +32,5 @@ import { OrderItemService } from '../order/order-item.service';
       });
     }
   }
+  process.exit();
 })();

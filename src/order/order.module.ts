@@ -11,6 +11,7 @@ import { OrderService } from './order.service';
 import { StripeModule } from 'nestjs-stripe';
 import { ConfigService } from '@nestjs/config';
 import { ClientsModule, Transport } from '@nestjs/microservices';
+import { OrderListener } from 'src/order/listeners/order.listener';
 
 @Module({
   imports: [
@@ -31,13 +32,13 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
         transport: Transport.KAFKA,
         options: {
           client: {
-            brokers: ['pkc-l6wr6.europe-west2.gcp.confluent.cloud:9092'],
+            brokers: ['pkc-6ojv2.us-west4.gcp.confluent.cloud:9092'],
             ssl: true,
             sasl: {
               mechanism: 'plain',
-              username: 'R3GVCJHB2IEMVUTY',
+              username: 'NX3IUMAGQ4MNIPHO',
               password:
-                'FN3ckkO4hMubmqW/3s3VvI6lJdbqYIa0V9y37Q4ZWxGkme0BeedB0qKt1wU78dID',
+                '6xAnJb8hMBOjiAdCF/Vve7YKMjffi0v5T2Tnlhh0Vu1YpBJGJh2quOnH2PShJQj8',
             },
           },
         },
@@ -45,6 +46,6 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
     ]),
   ],
   controllers: [OrderController],
-  providers: [OrderService, OrderItemService],
+  providers: [OrderService, OrderItemService, OrderListener],
 })
 export class OrderModule {}

@@ -137,7 +137,6 @@ export class OrderController {
     }
 
     await this.orderService.update(order.id, { complete: true });
-
     await this.eventEmitter.emit('order.completed', order);
 
     return {
