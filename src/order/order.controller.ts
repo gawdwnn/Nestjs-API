@@ -9,10 +9,10 @@ import {
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
-import { Link } from 'src/link/link.entity';
-import { LinkService } from 'src/link/link.service';
-import { Product } from 'src/product/product.entity';
-import { ProductService } from 'src/product/product.service';
+import { Link } from '../link/link.entity';
+import { LinkService } from '../link/link.service';
+import { Product } from '../product/product.entity';
+import { ProductService } from '../product/product.service';
 import { Connection } from 'typeorm';
 import { AuthGuard } from '../auth/auth.guard';
 import { CreateOrderDto } from './dtos/create-order.dto';

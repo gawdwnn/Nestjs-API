@@ -10,7 +10,7 @@ import { Order } from './order.entity';
 import { OrderService } from './order.service';
 import { StripeModule } from 'nestjs-stripe';
 import { ConfigService } from '@nestjs/config';
-import { MailerModule } from '@nestjs-modules/mailer';
+import { ClientsModule, Transport } from '@nestjs/microservices';
 
 @Module({
   imports: [
@@ -25,15 +25,24 @@ import { MailerModule } from '@nestjs-modules/mailer';
         apiVersion: '2020-08-27',
       }),
     }),
-    MailerModule.forRoot({
-      transport: {
-        host: 'docker.for.mac.localhost',
-        port: 1025,
+    ClientsModule.register([
+      {
+        name: 'KAFKA_SERVICE',
+        transport: Transport.KAFKA,
+        options: {
+          client: {
+            brokers: ['pkc-l6wr6.europe-west2.gcp.confluent.cloud:9092'],
+            ssl: true,
+            sasl: {
+              mechanism: 'plain',
+              username: 'R3GVCJHB2IEMVUTY',
+              password:
+                'FN3ckkO4hMubmqW/3s3VvI6lJdbqYIa0V9y37Q4ZWxGkme0BeedB0qKt1wU78dID',
+            },
+          },
+        },
       },
-      defaults: {
-        from: 'no-reply@example.com',
-      },
-    }),
+    ]),
   ],
   controllers: [OrderController],
   providers: [OrderService, OrderItemService],
